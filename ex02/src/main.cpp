@@ -31,6 +31,7 @@
 void subjectTest();
 void arrayTest();
 void deepCopyTest();
+void wrongHierarchyTest();
 void printFinalMessage();
 
 // ─────────────────────────────────────────────
@@ -43,6 +44,7 @@ int main()
 	subjectTest();
 	arrayTest();
 	deepCopyTest();
+	wrongHierarchyTest();
 	printFinalMessage();
 
 	return 0;
@@ -124,6 +126,19 @@ void deepCopyTest()
 
 	std::cout << "\n🔍 Original Dog's first idea after copy destruction: "
 			<< original.getBrain()->getIdea(0) << std::endl;
+}
+
+// ─────────────────────────────────────────────
+//          Wrong Hierarchy Demonstration
+// ─────────────────────────────────────────────
+void wrongHierarchyTest()
+{
+	SEPARATOR("4. Non-Polymorphic Behavior");
+
+	const WrongAnimal* fakeCat = new WrongCat();
+	std::cout << "\n🚫 WrongAnimal sound: ";
+	fakeCat->makeSound(); // Demonstrates non-virtual behavior
+	delete fakeCat;
 }
 
 // ─────────────────────────────────────────────
