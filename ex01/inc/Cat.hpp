@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meferraz <meferraz@student.42porto.pt>     #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 10:52:29 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 10:52:29 by meferraz         ###   ########.fr       */
+/*   Created: 2025-05-03 09:58:57 by meferraz          #+#    #+#             */
+/*   Updated: 2025-05-03 09:58:57 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-# include "ansi.h"
-# include <string>
-# include <iostream>
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class WrongAnimal
+class Cat : public Animal
 {
 	public:
-		WrongAnimal(void);
-		WrongAnimal(const WrongAnimal &rhs);
-		virtual ~WrongAnimal(void);
-		WrongAnimal &operator=(const WrongAnimal &rhs);
+		Cat(void);
+		Cat(const Cat &rhs);
+		virtual ~Cat(void);
+		Cat &operator=(const Cat &rhs);
 
 		void makeSound(void) const;
-		std::string getType(void) const;
+		Brain *getBrain(void) const;
 
-	protected:
-		std::string type;
+	private:
+		Brain *brain;
 };
 
-std::ostream &operator<<(std::ostream &out, const WrongAnimal &rhs);
-
-# endif
+#endif
