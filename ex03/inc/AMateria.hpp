@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:22:30 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 15:25:50 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:05:59 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "ICharacter.hpp"
 # include "ansi.h"
 #include <iostream>
+#include <string>
 
 class AMateria
 {
