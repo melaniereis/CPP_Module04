@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meferraz <meferraz@student.42porto.pt>     #+#  +:+       +#+        */
+/*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 10:01:50 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 10:01:50 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/03 10:01:50 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/05 14:59:12 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ Cat::Cat(void) : Animal()
 Cat::Cat(const Cat &rhs) : Animal(rhs)
 {
 	std::cout << GRN "✅ Cat Copy constructor called" RESET << std::endl;
-	if(rhs.getBrain())
-		this->brain = new Brain(*rhs.getBrain());
+	if(rhs.brain)
+		this->brain = new Brain(*rhs.brain);
 	else
 		this->brain = NULL;
-	this->type = rhs.getType();
+	this->type = rhs.type;
 }
 
 Cat::~Cat(void)
@@ -42,11 +42,11 @@ Cat &Cat::operator=(const Cat &rhs)
 	{
 		if (this->brain)
 			delete this->brain;
-		if (rhs.getBrain())
+		if (rhs.brain)
 			this->brain = new Brain(*rhs.getBrain());
 		else
 			this->brain = NULL;
-		this->type = rhs.getType();
+		this->type = rhs.type;
 	}
 	return (*this);
 }

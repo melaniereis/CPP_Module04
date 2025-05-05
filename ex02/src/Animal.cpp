@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meferraz <meferraz@student.42.fr>          #+#  +:+       +#+        */
+/*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 09:10:26 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 09:10:26 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/03 09:10:26 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/05 15:02:27 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ Animal &Animal::operator=(const Animal &rhs)
 {
 	std::cout << GRN "✅ Animal Copy assignment operator called" RESET << std::endl;
 	if (this != &rhs)
-		this->type = rhs.getType();
+		this->type = rhs.type;
 	return (*this);
-}
-
-std::string Animal::getType(void) const
-{
-	return (this->type);
 }
 
 std::ostream &operator<<(std::ostream &out, const Animal &rhs)
 {
 	out << rhs.getType();
 	return (out);
+}
+
+std::string Animal::getType(void) const
+{
+	return (this->type);
 }

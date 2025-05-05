@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/03 08:54:33 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 15:02:17 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/05 15:22:30 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/05 15:25:50 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
 
-#include "ansi.h"
-#include <string>
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
+
+# include "ICharacter.hpp"
+# include "ansi.h"
 #include <iostream>
 
-class Animal
+class AMateria
 {
 	public:
-		Animal(void);
-		Animal(const Animal &rhs);
-		virtual ~Animal(void);
-		Animal &operator=(const Animal &rhs);
+		AMateria(std::string const &type);
+		AMateria(void);
+		AMateria(const AMateria &rhs);
+		virtual ~AMateria(void);
+		AMateria &operator=(const AMateria &rhs);
 
-		virtual void makeSound(void) const = 0;
-		std::string getType(void) const;
+		std::string const &getType(void) const;
+		virtual AMateria *clone(void) const = 0;
+		virtual void use(ICharacter &target);
 
 	protected:
-		std::string type;
+		std::string _type;
 };
-
-std::ostream &operator<<(std::ostream &out, const Animal &rhs);
 
 #endif

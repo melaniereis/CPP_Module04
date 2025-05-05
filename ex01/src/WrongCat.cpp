@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meferraz <meferraz@student.42porto.pt>     #+#  +:+       +#+        */
+/*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 10:55:38 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 10:55:38 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/03 10:55:38 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/05 15:05:51 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ WrongCat &WrongCat::operator=(const WrongCat &rhs)
 {
 	std::cout << GRN "✅ WrongCat Copy assignment operator called" RESET << std::endl;
 	if (this != &rhs)
-		this->type = rhs.getType();
+		this->type = rhs.type;
 	return (*this);
 }
 

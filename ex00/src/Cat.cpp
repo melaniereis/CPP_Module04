@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meferraz <meferraz@student.42porto.pt>     #+#  +:+       +#+        */
+/*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 10:01:50 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 10:01:50 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/03 10:01:50 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/05 15:08:18 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Cat &Cat::operator=(const Cat &rhs)
 {
 	std::cout << GRN "✅ Cat Copy assignment operator called" RESET << std::endl;
 	if (this != &rhs)
-		this->type = rhs.getType();
+		this->type = rhs.type;
 	return (*this);
 }
 
