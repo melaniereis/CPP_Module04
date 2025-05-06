@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meferraz <meferraz@student.42.fr>          #+#  +:+       +#+        */
+/*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 09:17:36 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 09:17:36 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/03 09:17:36 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/06 21:22:30 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,21 @@ void printFinalMessage();
 // ─────────────────────────────────────────────
 //                  Entry Point
 // ─────────────────────────────────────────────
-int main()
+
+/**
+ * @brief Program entry point for the Animal Simulation.
+ *
+ * This function initiates the simulation by calling various test functions
+ * that demonstrate polymorphism, object creation, copying, and hierarchy.
+ *
+ * Functions called:
+ * - subjectTest: Demonstrates basic polymorphic behavior with Dog and Cat.
+ * - arrayTest: Tests polymorphic behavior within an array of animals.
+ * - deepCopyTest: Validates deep copying of objects.
+ * - wrongHierarchyTest: Examines behavior with an incorrect hierarchy.
+ * - printFinalMessage: Outputs a final message.
+ */
+int main(void)
 {
 	std::cout << BGRN "\n\n🌟===== 🐦 🐪 💮 ANIMAL SIMULATION 🌻 🌲 🐺 =====🌟\n\n" RESET;
 
@@ -53,6 +67,15 @@ int main()
 // ─────────────────────────────────────────────
 //             Subject Demonstration
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests polymorphic behavior with Dog and Cat objects.
+ *
+ * This function creates pointers to Animal, Dog, and Cat objects and
+ * demonstrates polymorphic behavior by calling makeSound on the Animal
+ * pointer. It then deletes all created objects to ensure proper memory
+ * management.
+ */
 void subjectTest()
 {
 	SEPARATOR("1. Original Subject Test");
@@ -73,6 +96,17 @@ void subjectTest()
 // ─────────────────────────────────────────────
 //                  Array Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests polymorphism with an array of Animal objects.
+ *
+ * This function creates an array of Animal objects, populates it with
+ * alternating Dog and Cat objects, and then calls makeSound on each.
+ * The output will be the appropriate sound for each animal type.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting all created objects.
+ */
 void arrayTest()
 {
 	SEPARATOR("2. Polymorphic Array Test");
@@ -100,6 +134,19 @@ void arrayTest()
 // ─────────────────────────────────────────────
 //             Deep Copy Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Validates deep copying of Dog objects.
+ *
+ * This function demonstrates the deep copy of a Dog object by creating a
+ * copy of the original Dog, modifying the copy, and then verifying that
+ * the original Dog's state remains unchanged.
+ *
+ * Output will show the original Dog's first idea, the copied Dog's first
+ * idea, and the modified copy's first idea. The final output will show
+ * the original Dog's first idea after the copy is destroyed, ensuring that
+ * the original Dog's state was not modified by the copy.
+ */
 void deepCopyTest()
 {
 	SEPARATOR("3. Deep Copy Validation");
@@ -126,6 +173,16 @@ void deepCopyTest()
 // ─────────────────────────────────────────────
 //          Wrong Hierarchy Demonstration
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Demonstrates non-polymorphic behavior by calling makeSound on a WrongAnimal pointer pointing to a WrongCat object.
+ *
+ * This function shows that the WrongAnimal class does not use virtual functions,
+ * and therefore calling makeSound on a WrongAnimal pointer pointing to a WrongCat
+ * object will not produce the expected behavior.
+ *
+ * Output will show the WrongAnimal sound instead of the WrongCat sound.
+ */
 void wrongHierarchyTest()
 {
 	SEPARATOR("4. Non-Polymorphic Behavior");
@@ -139,6 +196,15 @@ void wrongHierarchyTest()
 // ─────────────────────────────────────────────
 //                  Final Message
 // ─────────────────────────────────────────────
+
+/**
+ * Outputs a final message to the console indicating that the simulation
+ * is complete.
+ *
+ * This function is called at the end of the main function to output a final
+ * message to the console, which includes a green checkmark and a party popper
+ * emoji.
+ */
 void printFinalMessage()
 {
 	std::cout << "\n" << BGRN "🎉✅ Simulation complete! 🎉\n\n" RESET;
