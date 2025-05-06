@@ -6,17 +6,18 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:30:07 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 15:31:18 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:30:21 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
-# include "AMateria.hpp"
-# include "ansi.h"
-# include <iostream>
-# include <string>
+#include <string>
+#include <iostream>
+#include "ansi.h"
+
+class AMateria;
 
 class ICharacter
 {

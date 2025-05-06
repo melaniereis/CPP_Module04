@@ -6,11 +6,11 @@
 #    By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 15:02:25 by meferraz          #+#    #+#              #
-#    Updated: 2025/05/01 14:06:36 by meferraz         ###   ########.fr        #
+#    Updated: 2025/05/06 17:53:27 by meferraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = Brain
+NAME        = Interfaces
 
 #------------------------------------------------------------------------------#
 #                             NAMES AND PATHS                                  #
@@ -21,20 +21,21 @@ SRC_PATH    = src
 INC_PATH    = inc
 
 HEADERS     = $(addprefix $(INC_PATH)/, ansi.h \
-										Animal.hpp \
-										Cat.hpp \
-										Dog.hpp \
-										WrongAnimal.hpp\
-										WrongCat.hpp \
-										Brain.hpp \
+										AMateria.hpp \
+										ICharacter.hpp \
+										Character.hpp \
+										Cure.hpp \
+										Ice.hpp \
+										MateriaSource.hpp \
+										IMateriaSource.hpp \
 				)
 SRCS        = $(addprefix $(SRC_PATH)/, main.cpp \
-										Animal.cpp \
-										Cat.cpp \
-										Dog.cpp \
-										WrongAnimal.cpp \
-										WrongCat.cpp \
-										Brain.cpp \
+										AMateria.cpp \
+										Character.cpp \
+										CharacterPrinter.cpp \
+										Cure.cpp \
+										Ice.cpp \
+										MateriaSource.cpp \
 				)
 OBJS        = $(SRCS:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
 

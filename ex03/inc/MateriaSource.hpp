@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:21:01 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 16:46:45 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:08:44 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ class MateriaSource : public IMateriaSource
 
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
+
+	private:
+		AMateria *_materias[4];
 };
 
 #endif

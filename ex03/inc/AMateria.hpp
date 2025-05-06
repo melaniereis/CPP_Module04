@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:22:30 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 16:05:59 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:23:57 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-# include "ICharacter.hpp"
 # include "ansi.h"
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include <vector>
+
+class ICharacter;
 
 class AMateria
 {

@@ -6,31 +6,32 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 15:57:38 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 16:03:09 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:56:45 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Ice.hpp"
+#include "../inc/ICharacter.hpp"
 
 Ice::Ice(void) : AMateria("ice")
 {
-	std::cout << GRN "✅ Ice Default constructor called" RESET << std::endl;
+	//std::cout << GRN "✅ Ice Default constructor called" RESET << std::endl;
 }
 
 Ice::Ice(const Ice &rhs) : AMateria(rhs)
 {
-	std::cout << GRN "✅ Ice Copy constructor called" RESET << std::endl;
+	//std::cout << GRN "✅ Ice Copy constructor called" RESET << std::endl;
 	*this = rhs;
 }
 
 Ice::~Ice(void)
 {
-	std::cout << RED "❌ Ice Destructor called" RESET << std::endl;
+	//std::cout << RED "❌ Ice Destructor called" RESET << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &rhs)
 {
-	std::cout << GRN "✅ Ice Copy assignment operator called" RESET << std::endl;
+	//std::cout << GRN "✅ Ice Copy assignment operator called" RESET << std::endl;
 	if (this != &rhs)
 		this->_type = rhs._type;
 	return (*this);

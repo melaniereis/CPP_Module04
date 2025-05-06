@@ -6,15 +6,15 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 09:17:36 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 14:59:35 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:07:48 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Animal.hpp"
-#include "../inc/Cat.hpp"
-#include "../inc/Dog.hpp"
-#include "../inc/WrongAnimal.hpp"
-#include "../inc/WrongCat.hpp"
+#include "../inc/Character.hpp"
+#include "../inc/Ice.hpp"
+#include "../inc/Cure.hpp"
+#include "../inc/MateriaSource.hpp"
+
 
 // ─────────────────────────────────────────────
 //                Format Macros
@@ -29,22 +29,19 @@
 //              Function Prototypes
 // ─────────────────────────────────────────────
 void subjectTest();
-void arrayTest();
-void deepCopyTest();
-void wrongHierarchyTest();
+void extraTests();
 void printFinalMessage();
+
 
 // ─────────────────────────────────────────────
 //                  Entry Point
 // ─────────────────────────────────────────────
 int main()
 {
-	std::cout << BGRN "\n\n🌟===== 🐦 🐪 💮 ANIMAL SIMULATION 🌻 🌲 🐺 =====🌟\n\n" RESET;
+	std::cout << BGRN "\n\n🌟===== Interfaces Simulation =====🌟\n\n" RESET;
 
 	subjectTest();
-	arrayTest();
-	deepCopyTest();
-	wrongHierarchyTest();
+	extraTests();
 	printFinalMessage();
 
 	return 0;
@@ -57,88 +54,107 @@ void subjectTest()
 {
 	SEPARATOR("Subject Test");
 
-	//const Animal* meta = new Animal();
-	SEPARATOR("1. Original Subject Test");
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	ICharacter* me = new Character("me");
 
-	std::cout << "\n🔊 Testing polymorphic sounds:\n";
-	std::cout << "Dog says: ";
-	j->makeSound();
-	std::cout << "Cat says: ";
-	i->makeSound();
-	//meta->makeSound();
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 
-	//delete meta;
-	delete i;
-	delete j;
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
 }
 
 // ─────────────────────────────────────────────
-//                  Array Test
+//               Extra Tests
 // ─────────────────────────────────────────────
-void arrayTest()
+void extraTests()
 {
-	SEPARATOR("2. Polymorphic Array Test");
+	SEPARATOR("Extra Tests");
 
-	const Animal* animals[4];
+	// Test MateriaSource learning and creating
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice()); // Learn another Ice
 
-	// Half dogs, half cats
-	for (int i = 0; i < 2; i++)
-		animals[i] = new Dog();
-	for (int i = 2; i < 4; i++)
-		animals[i] = new Cat();
+	// Try to learn more than 4 Materias
+	for (int i = 0; i < 3; ++i)
+		src->learnMateria(new Cure()); // Should only learn up to 4
 
-	std::cout << "\n🗣️  Array sound check:\n";
-	for (int i = 0; i < 4; i++)
-	{
-		std::cout << "Animal " << i << ": ";
-		animals[i]->makeSound();
-	}
+	// Create Materias
+	AMateria* ice = src->createMateria("ice");
+	AMateria* cure = src->createMateria("cure");
+	AMateria* unknown = src->createMateria("unknown"); // Should return NULL
+
+	// Test Character equipping
+	Character hero("Hero");
+	std::cout << "Initial state:\n" << hero << std::endl;
+
+	hero.equip(ice);
+	hero.equip(cure);
+	hero.equip(src->createMateria("ice"));
+	hero.equip(src->createMateria("cure"));
+	std::cout << "After equipping 4 Materias:\n" << hero << std::endl;
+
+	// Try to equip more than 4 Materias
+	hero.equip(src->createMateria("ice")); // Should not equip
+	std::cout << "After trying to equip a 5th Materia:\n" << hero << std::endl;
+
+	// Use equipped Materias
+	Character target("Target");
+	hero.use(0, target);
+	hero.use(1, target);
+	hero.use(2, target);
+	hero.use(3, target);
+	hero.use(4, target); // Invalid index
+
+	// Unequip Materias
+	hero.unequip(1);
+	hero.unequip(3);
+	hero.unequip(5); // Invalid index
+	std::cout << "After unequipping slots 1 and 3:\n" << hero << std::endl;
+
+	// Re-equip new Materias
+	hero.equip(src->createMateria("cure"));
+	hero.equip(src->createMateria("ice"));
+	std::cout << "After re-equipping:\n" << hero << std::endl;
+
+	// Use again
+	hero.use(0, target);
+	hero.use(1, target);
+	hero.use(2, target);
+	hero.use(3, target);
+
+	// Test deep copy
+	Character copy = hero;
+	std::cout << "Copy of hero:\n" << copy << std::endl;
+	copy.use(0, target);
+	copy.use(1, target);
+
+	// Modify original and check copy
+	hero.unequip(0);
+	hero.equip(src->createMateria("cure"));
+	std::cout << "After modifying hero:\n" << hero << std::endl;
+	std::cout << "Copy remains unchanged:\n" << copy << std::endl;
+	hero.use(0, target);
+	copy.use(0, target); // Should still have the original Materia
 
 	// Cleanup
-	for (int i = 0; i < 4; i++)
-		delete animals[i];
-}
-
-// ─────────────────────────────────────────────
-//             Deep Copy Test
-// ─────────────────────────────────────────────
-void deepCopyTest()
-{
-	SEPARATOR("3. Deep Copy Validation");
-
-	Dog original;
-	std::cout << "\n🧠 Original Dog's first idea: "
-			<< original.getBrain()->getIdea(0) << std::endl;
-
-	{ // Scope for copied dog
-		Dog copy(original);
-		std::cout << "📝 Copied Dog's first idea:  "
-				<< copy.getBrain()->getIdea(0) << std::endl;
-
-		// Modify copy's idea
-		copy.getBrain()->setRandomIdeas();
-		std::cout << "🔄 Modified copy's first idea: "
-				<< copy.getBrain()->getIdea(0) << std::endl;
-	} // Copy destroyed here
-
-	std::cout << "\n🔍 Original Dog's first idea after copy destruction: "
-			<< original.getBrain()->getIdea(0) << std::endl;
-}
-
-// ─────────────────────────────────────────────
-//          Wrong Hierarchy Demonstration
-// ─────────────────────────────────────────────
-void wrongHierarchyTest()
-{
-	SEPARATOR("4. Non-Polymorphic Behavior");
-
-	const WrongAnimal* fakeCat = new WrongCat();
-	std::cout << "\n🚫 WrongAnimal sound: ";
-	fakeCat->makeSound(); // Demonstrates non-virtual behavior
-	delete fakeCat;
+	delete src;
+	if (unknown)
+		delete unknown; // Should be NULL, but check to avoid leaks
 }
 
 // ─────────────────────────────────────────────

@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 16:06:22 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 16:20:45 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:48:20 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHARACTER_HPP
 
 #include "../inc/ICharacter.hpp"
+#include "../inc/AMateria.hpp"
 
 class Character : public ICharacter
 {
@@ -31,11 +32,24 @@ class Character : public ICharacter
 
 		int getCount(void) const;
 		AMateria *getMateria(int idx) const;
+		AMateria *getUnequipped(int idx) const;
 
 	private:
 		std::string _name;
 		AMateria *_inventory[4];
+		AMateria *_unequipped[4];
 		int _count;
-}
+};
 
+// Helper struct for centering text
+struct CenterAlign
+{
+	CenterAlign(const std::string s, int w) : str(s), width(w) {}
+	std::string str;
+	int width;
+};
+
+// Forward declaration of operator<< for CenterAlign and Character
+std::ostream &operator<<(std::ostream &os, const CenterAlign &ca);
+std::ostream &operator<<(std::ostream &out, const Character &rhs);
 #endif
