@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 09:17:36 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/05 14:59:35 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:35:59 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,21 @@ void printFinalMessage();
 // ─────────────────────────────────────────────
 //                  Entry Point
 // ─────────────────────────────────────────────
-int main()
+
+/**
+ * @brief Program entry point.
+ *
+ * Simulates some animal behaviors and tests object creation/copying.
+ *
+ * 1. Subject Test: Tests the Animal base class and its derived classes.
+ * 2. Array Test: Tests the animal array.
+ * 3. Deep Copy Test: Tests deep copying of objects.
+ * 4. Wrong Animal Test: Tests WrongAnimal and WrongCat classes.
+ * 5. Copy Constructor Test: Tests the copy constructor.
+ * 6. Assignment Operator Test: Tests the assignment operator.
+ * 7. Output Operator Test: Tests the output operator.
+ */
+int main(void)
 {
 	std::cout << BGRN "\n\n🌟===== 🐦 🐪 💮 ANIMAL SIMULATION 🌻 🌲 🐺 =====🌟\n\n" RESET;
 
@@ -53,6 +67,17 @@ int main()
 // ─────────────────────────────────────────────
 //             Subject Demonstration
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests the Animal base class and its derived classes.
+ *
+ * This function creates instances of Dog and Cat, then outputs
+ * their types and sounds. It showcases polymorphic behavior by calling
+ * makeSound on pointers to the base class.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting all created objects.
+ */
 void subjectTest()
 {
 	SEPARATOR("Subject Test");
@@ -78,6 +103,17 @@ void subjectTest()
 // ─────────────────────────────────────────────
 //                  Array Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests polymorphic behavior with an array of Animal objects.
+ *
+ * This function creates an array of Animal objects, populates it with
+ * alternating Dog and Cat objects, and then calls makeSound on each.
+ * The output will be the appropriate sound for each animal type.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting all created objects.
+ */
 void arrayTest()
 {
 	SEPARATOR("2. Polymorphic Array Test");
@@ -105,6 +141,18 @@ void arrayTest()
 // ─────────────────────────────────────────────
 //             Deep Copy Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Validates deep copying of Dog objects and their Brain instances.
+ *
+ * This function demonstrates the deep copy mechanism by creating an original
+ * Dog object and a copy of it. It shows that the Brain of the copied Dog can
+ * be modified without affecting the original Dog's Brain, thus validating the
+ * deep copy process. The function outputs the first idea from each Dog's Brain
+ * before and after the modification, ensuring that the original object's
+ * state remains unchanged even after the copy is destroyed.
+ */
+
 void deepCopyTest()
 {
 	SEPARATOR("3. Deep Copy Validation");
@@ -131,6 +179,17 @@ void deepCopyTest()
 // ─────────────────────────────────────────────
 //          Wrong Hierarchy Demonstration
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Demonstrates non-polymorphic behavior with WrongAnimal and WrongCat classes.
+ *
+ * This function creates a WrongAnimal pointer pointing to a WrongCat object,
+ * then calls makeSound on the pointer. The output will be the WrongAnimal's
+ * sound, not the WrongCat's sound, demonstrating non-virtual behavior.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting the created object.
+ */
 void wrongHierarchyTest()
 {
 	SEPARATOR("4. Non-Polymorphic Behavior");
@@ -144,6 +203,15 @@ void wrongHierarchyTest()
 // ─────────────────────────────────────────────
 //                  Final Message
 // ─────────────────────────────────────────────
+
+/**
+ * Outputs a final message to the console indicating that the simulation
+ * is complete.
+ *
+ * This function is called at the end of the main function to output a final
+ * message to the console, which includes a green checkmark and a party popper
+ * emoji.
+ */
 void printFinalMessage()
 {
 	std::cout << "\n" << BGRN "🎉✅ Simulation complete! 🎉\n\n" RESET;
