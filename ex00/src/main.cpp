@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meferraz <meferraz@student.42.fr>          #+#  +:+       +#+        */
+/*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-03 09:17:36 by meferraz          #+#    #+#             */
-/*   Updated: 2025-05-03 09:17:36 by meferraz         ###   ########.fr       */
+/*   Created: 2025/05/03 09:17:36 by meferraz          #+#    #+#             */
+/*   Updated: 2025/05/06 21:13:28 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,21 @@ void printFinalMessage();
 // ─────────────────────────────────────────────
 //                  Entry Point
 // ─────────────────────────────────────────────
-int main()
+
+/**
+ * Program entry point.
+ *
+ * Simulates some animal behaviors and tests object creation/copying.
+ *
+ * 1. Subject Test: Tests the Animal base class and its derived classes.
+ * 2. Array Test: Tests the animal array.
+ * 3. Object Slicing Test: Tests object slicing.
+ * 4. Wrong Animal Test: Tests WrongAnimal and WrongCat classes.
+ * 5. Copy Constructor Test: Tests the copy constructor.
+ * 6. Assignment Operator Test: Tests the assignment operator.
+ * 7. Output Operator Test: Tests the output operator.
+ */
+int main(void)
 {
 	std::cout << BGRN "\n\n🌟===== 🐦 🐪 💮 ANIMAL SIMULATION 🌻 🌲 🐺 =====🌟\n\n" RESET;
 
@@ -59,6 +73,17 @@ int main()
 // ─────────────────────────────────────────────
 //             Subject Demonstration
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Demonstrates basic polymorphism with Animal, Dog, and Cat classes.
+ *
+ * This function creates instances of Animal, Dog, and Cat, then outputs
+ * their types and sounds. It showcases polymorphic behavior by calling
+ * makeSound on pointers to the base class.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting all created objects.
+ */
 void subjectTest()
 {
 	SEPARATOR("Subject Test");
@@ -82,6 +107,17 @@ void subjectTest()
 // ─────────────────────────────────────────────
 //              Polymorphism Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests polymorphism with an array of Animal objects.
+ *
+ * This function creates an array of Animal objects, populates it with
+ * alternating Dog and Cat objects, and then calls makeSound on each.
+ * The output will be the appropriate sound for each animal type.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting all created objects.
+ */
 void arrayTest()
 {
 	SEPARATOR("Polymorphism Array Test");
@@ -111,6 +147,16 @@ void arrayTest()
 // ─────────────────────────────────────────────
 //             Object Slicing Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Demonstrates object slicing with Animal and Cat classes.
+ *
+ * This function illustrates the concept of object slicing by assigning
+ * a Cat object to an Animal object, resulting in the loss of the Cat-specific
+ * behavior. It outputs the type and sound of both the real Cat and the
+ * sliced Animal to showcase the effect of slicing. The real Cat retains
+ * its specific behavior, while the sliced Animal exhibits base class behavior.
+ */
 void objectSlicingTest()
 {
 	SEPARATOR("Object Slicing Test");
@@ -130,6 +176,18 @@ void objectSlicingTest()
 // ─────────────────────────────────────────────
 //          Non-Virtual Behavior Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Demonstrates non-virtual behavior with WrongAnimal and WrongCat classes.
+ *
+ * This function creates instances of WrongAnimal and WrongCat, then outputs
+ * their types and sounds. It showcases non-virtual behavior by calling
+ * makeSound on pointers to the base class, which should output the base
+ * class's sound, instead of the derived class's sound.
+ *
+ * The function also illustrates object creation and destruction, ensuring
+ * proper memory management by deleting all created objects.
+ */
 void wrongAnimalTest()
 {
 	SEPARATOR("Wrong Animal Test");
@@ -150,6 +208,14 @@ void wrongAnimalTest()
 // ─────────────────────────────────────────────
 //             Copy Constructor Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests the copy constructor with Dog objects.
+ *
+ * This function creates a Dog object and creates a copy of it using the copy
+ * constructor. It then outputs the type and sound of both the original and
+ * copied Dog objects to demonstrate that the copy was successful.
+ */
 void copyConstructorTest()
 {
 	SEPARATOR("Copy Constructor Test");
@@ -165,6 +231,14 @@ void copyConstructorTest()
 // ─────────────────────────────────────────────
 //           Assignment Operator Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests the assignment operator with Cat objects.
+ *
+ * This function creates two Cat objects, cat1 and cat2, and assigns cat1 to
+ * cat2. It then outputs the types and sounds of both Cat objects to demonstrate
+ * that the assignment operator copied the values correctly.
+ */
 void assignmentOperatorTest()
 {
 	SEPARATOR("Assignment Operator Test");
@@ -182,6 +256,15 @@ void assignmentOperatorTest()
 // ─────────────────────────────────────────────
 //           Output Operator Test
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests the output operator for all animal types.
+ *
+ * This function creates instances of all animal types and outputs them
+ * using the overloaded output operator. It then prints the output
+ * to the console to demonstrate that the output operator is working
+ * correctly.
+ */
 void outputOperatorTest()
 {
 	SEPARATOR("Output Operator Test");
@@ -201,6 +284,15 @@ void outputOperatorTest()
 // ─────────────────────────────────────────────
 //                  Final Message
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Outputs a final message to the console indicating that the simulation
+ * is complete.
+ *
+ * This function is called at the end of the main function to output a final
+ * message to the console, which includes a green checkmark and a party popper
+ * emoji.
+ */
 void printFinalMessage()
 {
 	std::cout << "\n" << BGRN "🎉✅ Simulation complete! 🎉\n\n" RESET;
