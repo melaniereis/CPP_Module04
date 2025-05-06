@@ -6,12 +6,18 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:33:17 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/06 17:48:38 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:43:29 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Character.hpp"
 
+/**
+ * @brief Default constructor for the Character class.
+ *
+ * This constructor creates a Character with the name "Default" and initializes
+ * the inventory and unequipped storage with NULL pointers.
+ */
 Character::Character(void) : _name("Default"), _count(0)
 {
 	//std::cout << GRN "✅ Character Default constructor called" RESET << std::endl;
@@ -22,6 +28,15 @@ Character::Character(void) : _name("Default"), _count(0)
 	}
 }
 
+/**
+ * @brief Character constructor with a name.
+ *
+ * This constructor initializes a Character object with the given name. The
+ * count is set to 0, and the inventory and unequipped Materia arrays are
+ * initialized to NULL. The name is copied internally.
+ *
+ * @param name The name of the Character.
+ */
 Character::Character(std::string name) : _name(name), _count(0)
 {
 	//std::cout << GRN "✅ Character Name constructor called" RESET << std::endl;
@@ -32,6 +47,16 @@ Character::Character(std::string name) : _name(name), _count(0)
 	}
 }
 
+/**
+ * @brief Copy constructor for the Character class.
+ *
+ * This constructor creates a deep copy of a Character object. It copies the
+ * name and count of the source object, and creates a deep copy of the
+ * inventory and unequipped Materia stored in the source object. It does not
+ * copy the unequipped Materia.
+ *
+ * @param rhs The Character object to copy from.
+ */
 Character::Character(const Character &rhs) : _name(rhs._name), _count(rhs._count)
 {
 	//std::cout << GRN "✅ Character Copy constructor called" RESET << std::endl;
@@ -58,6 +83,14 @@ Character::~Character(void)
 	}
 }
 
+/**
+ * @brief Copy assignment operator for the Character class.
+ *
+ * This operator allows one Character object to be assigned the values of another Character object.
+ *
+ * @param rhs The Character object to assign from.
+ * @return A reference to the current object.
+ */
 Character &Character::operator=(const Character &rhs)
 {
 	//std::cout << GRN "✅ Character Copy assignment operator called" RESET << std::endl;
@@ -88,16 +121,36 @@ Character &Character::operator=(const Character &rhs)
 	return (*this);
 }
 
+/**
+ * @brief Retrieves the name of the Character.
+ *
+ * This function returns the name of the Character as a string.
+ *
+ * @return The name of the Character.
+ */
 std::string const &Character::getName(void) const
 {
 	return (this->_name);
 }
 
+/**
+ * @brief Retrieves the count of equipped Materia in the Character's inventory.
+ *
+ * @return The number of Materia currently equipped.
+ */
 int Character::getCount(void) const
 {
 	return (this->_count);
 }
 
+/**
+ * @brief Retrieves the Materia at the specified index in the inventory.
+ *
+ * If the index is invalid, this function returns NULL. Otherwise, it returns the
+ * Materia at the specified index in the inventory.
+ *
+ * @param idx The index of the inventory slot to retrieve (0 to 3).
+ */
 AMateria *Character::getMateria(int idx) const
 {
 	if (idx >= 0 && idx < 4)
@@ -105,6 +158,14 @@ AMateria *Character::getMateria(int idx) const
 	return (NULL);
 }
 
+/**
+ * @brief Retrieves the Materia at the specified index in the unequipped storage.
+ *
+ * If the index is invalid, this function returns NULL. Otherwise, it returns the
+ * Materia at the specified index in the unequipped storage.
+ *
+ * @param idx The index of the unequipped storage slot to retrieve (0 to 3).
+ */
 AMateria *Character::getUnequipped(int idx) const
 {
 	if (idx >= 0 && idx < 4)
@@ -112,6 +173,16 @@ AMateria *Character::getUnequipped(int idx) const
 	return (NULL);
 }
 
+/**
+ * @brief Uses the Materia at the specified inventory slot on the target.
+ *
+ * This function attempts to use a Materia from the given index in the inventory
+ * on the specified target character. If the index is invalid or the slot is empty,
+ * an error message is printed. Otherwise, the Materia's use function is called.
+ *
+ * @param idx The index of the inventory slot to use (0 to 3).
+ * @param target The target character on which to use the Materia.
+ */
 void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx >= 4 || !this->_inventory[idx])
@@ -122,6 +193,14 @@ void Character::use(int idx, ICharacter &target)
 	this->_inventory[idx]->use(target);
 }
 
+/**
+ * equip
+ *
+ * Equips a Materia in the first available slot in the Character's inventory.
+ * If there is no space available, an error message is printed and the materia is freed.
+ *
+ * @param m The Materia to equip.
+ */
 void Character::equip(AMateria *m)
 {
 	if (!m)
@@ -144,6 +223,16 @@ void Character::equip(AMateria *m)
 		delete m; // Free the materia if it was not added to the inventory
 }
 
+/**
+ * @brief Unequips a Materia from the specified inventory slot and moves it to unequipped storage.
+ *
+ * This function attempts to move a Materia from the given index in the inventory
+ * to the first available slot in the unequipped storage. If the index is invalid
+ * or the slot is empty, an error message is printed. If there is no space in the
+ * unequipped storage, an error message is printed.
+ *
+ * @param idx The index of the inventory slot to unequip from (0 to 3).
+ */
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || this->_inventory[idx] == NULL)

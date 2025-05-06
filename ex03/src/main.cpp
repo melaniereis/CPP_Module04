@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 09:17:36 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/06 17:07:48 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:51:58 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ void printFinalMessage();
 // ─────────────────────────────────────────────
 //                  Entry Point
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Program entry point for the Interfaces Simulation.
+ *
+ * This function initiates the simulation by calling various test functions
+ * to demonstrate the implementation and behavior of interfaces.
+ *
+ * Functions called:
+ * - subjectTest: Demonstrates the core functionality with interfaces.
+ * - extraTests: Executes additional tests to further explore interface usage.
+ * - printFinalMessage: Outputs a final message to conclude the simulation.
+ */
 int main()
 {
 	std::cout << BGRN "\n\n🌟===== Interfaces Simulation =====🌟\n\n" RESET;
@@ -50,6 +62,17 @@ int main()
 // ─────────────────────────────────────────────
 //             Subject Demonstration
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Tests the core functionality of the MateriaSource and Character classes.
+ *
+ * This function:
+ * 1. Creates a MateriaSource and teaches it to create Ice and Cure Materia.
+ * 2. Creates a Character and equips it with the learned Materia.
+ * 3. Creates another Character to receive the effects of the Materia.
+ * 4. Uses the equipped Materia on the other Character.
+ * 5. Deletes all created objects to ensure proper memory management.
+ */
 void subjectTest()
 {
 	SEPARATOR("Subject Test");
@@ -79,6 +102,15 @@ void subjectTest()
 // ─────────────────────────────────────────────
 //               Extra Tests
 // ─────────────────────────────────────────────
+
+/**
+ * @brief Performs additional tests for the MateriaSource and Character classes.
+ *
+ * This function tests learning and creating Materias, equipping and unequipping
+ * Materias, using equipped Materias, and deep copying of Characters. It also
+ * tests edge cases such as learning more than 4 Materias, equipping more than 4
+ * Materias, and using an invalid index.
+ */
 void extraTests()
 {
 	SEPARATOR("Extra Tests");
@@ -160,6 +192,15 @@ void extraTests()
 // ─────────────────────────────────────────────
 //                  Final Message
 // ─────────────────────────────────────────────
+
+/**
+ * Outputs a final message to the console indicating that the simulation
+ * is complete.
+ *
+ * This function is called at the end of the main function to output a final
+ * message to the console, which includes a green checkmark and a party popper
+ * emoji.
+ */
 void printFinalMessage()
 {
 	std::cout << "\n" << BGRN "🎉✅ Simulation complete! 🎉\n\n" RESET;

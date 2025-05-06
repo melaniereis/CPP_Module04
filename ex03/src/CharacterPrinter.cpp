@@ -6,13 +6,17 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:48:52 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/06 17:52:29 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/06 21:45:40 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Character.hpp"
 
-// CenterAlign operator<<
+/**
+ * @brief CenterAlign constructor.
+ *
+ * This constructor creates a CenterAlign object with the given string and width.
+ */
 std::ostream& operator<<(std::ostream& os, const CenterAlign& ca)
 {
 	int padding = (ca.width - ca.str.length()) / 2;
@@ -25,7 +29,15 @@ std::ostream& operator<<(std::ostream& os, const CenterAlign& ca)
 	return os;
 }
 
-// Helper function to print the header
+/**
+ * @brief Helper function to print a formatted header to the output stream.
+ *
+ * Outputs a bold cyan line with the character's name and a bold blue line
+ * above and below it.
+ *
+ * @param out The output stream to write to.
+ * @param rhs The Character object to print the header for.
+ */
 static void printHeader(std::ostream &out, const Character &rhs)
 {
 	const std::string boldLine = "=============================================";
@@ -35,7 +47,14 @@ static void printHeader(std::ostream &out, const Character &rhs)
 		<< BBLU << boldLine << RESET << "\n\n";
 }
 
-// Helper function to print equipped Materias
+/**
+ * @brief Helper function to print equipped Materias.
+ *
+ * Outputs the equipped Materias in a formatted table with slots.
+ *
+ * @param out The output stream to write to.
+ * @param rhs The Character object containing the Materias.
+ */
 static void printEquippedMateria(std::ostream &out, const Character &rhs)
 {
 	const int slotWidth = 14;
@@ -72,7 +91,14 @@ static void printEquippedMateria(std::ostream &out, const Character &rhs)
 	out << std::endl;
 }
 
-// Helper function to print unequipped Materias
+/**
+ * @brief Helper function to print unequipped Materias.
+ *
+ * Outputs the unequipped Materias in a formatted list with numbers.
+ *
+ * @param out The output stream to write to.
+ * @param rhs The Character object containing the Materias.
+ */
 static void printUnequippedMateria(std::ostream &out, const Character &rhs)
 {
 	const int slotWidth = 14;
@@ -98,7 +124,16 @@ static void printUnequippedMateria(std::ostream &out, const Character &rhs)
 		out << "\n";
 }
 
-// Main operator<< for Character
+/**
+ * @brief Overloaded output operator for the Character class.
+ *
+ * This operator allows the Character object to be printed to an output stream.
+ * It prints the character's name, equipped Materias, and unequipped Materias.
+ *
+ * @param out The output stream to write to.
+ * @param rhs The Character object to output.
+ * @return The output stream after writing the character information.
+ */
 std::ostream &operator<<(std::ostream &out, const Character &rhs)
 {
 	printHeader(out, rhs);
