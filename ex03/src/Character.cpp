@@ -212,9 +212,10 @@ void Character::equip(AMateria *m)
 	{
 		if (this->_inventory[i] == NULL)
 		{
-			this->_inventory[i] = m;
+			this->_inventory[i] = m->clone();
 			++(this->_count);
 			std::cout << GRN "✅ Equipped " << m->getType() << " in slot " << i << RESET << std::endl;
+			delete m;
 			return;
 		}
 	}
