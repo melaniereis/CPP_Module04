@@ -30,7 +30,7 @@ Dog::Dog(void) : Animal()
  * Prints a message when called.
  * Copies the type of the rhs object.
  */
-Dog::Dog(const Dog &rhs)
+Dog::Dog(const Dog &rhs): Animal(rhs)
 {
 	std::cout << GRN "✅ Dog Copy constructor called" RESET << std::endl;
 	*this = rhs;

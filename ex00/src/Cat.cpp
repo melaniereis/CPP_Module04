@@ -33,7 +33,7 @@ Cat::Cat(void) : Animal()
  *
  * @param rhs The Cat object to be copied.
  */
-Cat::Cat(const Cat &rhs)
+Cat::Cat(const Cat &rhs) : Animal(rhs)
 {
 	std::cout << GRN "✅ Cat Copy constructor called" RESET << std::endl;
 	*this = rhs;
