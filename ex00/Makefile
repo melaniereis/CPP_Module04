@@ -6,7 +6,7 @@
 #    By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 15:02:25 by meferraz          #+#    #+#              #
-#    Updated: 2025/05/01 14:06:36 by meferraz         ###   ########.fr        #
+#    Updated: 2025/05/09 21:20:27 by meferraz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ MKDIR       = mkdir -p
 INCLUDES    = -I$(INC_PATH)
 
 # Valgrind options
-V_ARGS      = --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
+V_ARGS      = --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 #------------------------------------------------------------------------------#
 #                             COLORS & EMOJIS                                  #
