@@ -35,7 +35,7 @@ WrongCat::WrongCat(void) : WrongAnimal()
  *
  * @param rhs The WrongCat object to copy from.
  */
-WrongCat::WrongCat(const WrongCat &rhs)
+WrongCat::WrongCat(const WrongCat &rhs) : WrongAnimal(rhs)
 {
 	std::cout << GRN "✅ WrongCat Copy constructor called" RESET << std::endl;
 	*this = rhs;
