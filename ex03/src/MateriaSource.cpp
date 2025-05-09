@@ -6,7 +6,7 @@
 /*   By: meferraz <meferraz@student.42porto.pt>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 16:02:30 by meferraz          #+#    #+#             */
-/*   Updated: 2025/05/06 21:52:20 by meferraz         ###   ########.fr       */
+/*   Updated: 2025/05/09 15:46:15 by meferraz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ MateriaSource::MateriaSource(void)
 MateriaSource::~MateriaSource(void)
 {
 	//std::cout << GRN "❌ MateriaSource Default destructor called" RESET << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_materias[i])
+			delete this->_materias[i];
+	}
 }
 MateriaSource::MateriaSource(const MateriaSource &rhs)
 {
@@ -94,7 +99,8 @@ void MateriaSource::learnMateria(AMateria *m)
 	{
 		if (!this->_materias[i])
 		{
-			this->_materias[i] = m;
+			this->_materias[i] = m->clone();
+			delete m; // Free the original materia after cloning
 			return ;
 		}
 	}
