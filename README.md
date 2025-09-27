@@ -744,6 +744,6 @@ After mastering Module 04, you'll be ready to tackle:
 
 *"Polymorphism is not just about code reuse, it's about designing flexible, maintainable systems."*
 
-**Module 04 Complete** ✨ | **Previous**: [← Module 03](../CPP_Module03/README.md) | **Next**: [Module 05 →](../CPP_Module05/README.md)
+**Module 04 Complete** ✨ | **Previous**: [← Module 03](https://github.com/melaniereis/CPP_Module03/) | **Next**: [Module 05 →](https://github.com/melaniereis/CPP_Module005)
 
 </div>
